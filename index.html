@@ -35,9 +35,8 @@
     </div>
 
     <div class="col-sm-8 container">
-        <ul class="list-group" ng-repeat="pokemon in pokemons.pokemon| filter:searchText:strict">
-            <li class="list-group-item"><a href="" ng-click="getPokemon(pokemon.resource_uri)">{{pokemon.name}} </a>
-            </li>
+        <ul class="list-group" ng-repeat="pokemon in pokemons.pokemon| filter:searchText:strict | orderBy:'name'">
+            <a href="" class="list-group-item" ng-click="getPokemon(pokemon.resource_uri)">{{pokemon.name}}</a>
         </ul>
     </div>
 </div>

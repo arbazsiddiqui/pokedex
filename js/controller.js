@@ -22,7 +22,12 @@ angular.module('pokedexController', [])
             $http.get('http://pokeapi.co/' + id)
                 .success(function (data) {
                     $scope.selectedPokemon = data;
-                    getImage(data.sprites[0].resource_uri)
+                    if (data.sprites.length !=0) {
+                        getImage(data.sprites[0].resource_uri)
+                    }
+                    else {
+                        $scope.imageURL = ""
+                    }
                 })
                 .error(function (data) {
                     console.log('Error: ' + data);
