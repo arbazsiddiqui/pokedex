@@ -1,0 +1,46 @@
+<html ng-app="pokedexProject">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>pokedex</title>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/jQuery-2.2.0.min.js"></script>
+    <link rel="stylesheet" href="js/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="sheet.css">
+    <script src="js/controller.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/core.js"></script>
+</head>
+
+<body ng-controller="mainController">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Pokedex</a>
+        </div>
+        <div class="col-sm-3 col-md-3 pull-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"
+                           ng-model="searchText.name">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="col-sm-4 container">
+        <div ng-include="'pokemon.html'">
+
+        </div>
+    </div>
+
+    <div class="col-sm-8 container">
+        <ul class="list-group" ng-repeat="pokemon in pokemons.pokemon| filter:searchText:strict">
+            <li class="list-group-item"><a href="" ng-click="getPokemon(pokemon.resource_uri)">{{pokemon.name}} </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
